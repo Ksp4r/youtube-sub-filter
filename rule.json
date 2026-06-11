@@ -1,5 +1,5 @@
 {
-  "name": "Youtube-Sub-Fix",
+  "name": "Youtube-Sub-Filter",
   "author": "Ksp4r",
   "selector": ".*youtube.*/subscriptions",
   "onLoad": true,

@@ -29,8 +29,17 @@ function callback (){
     }
 }
 
-setTimeout(()=>{
-    const observer = new MutationObserver(callback);
-    observer.observe(target(), {childList:true});
-    callback();
-}, 1000);
+function loop(){
+    setTimeout(() =>{
+        if (target()){
+            const observer = new MutationObserver(callback);
+            observer.observe(target(), {childList:true});
+            callback();
+        } else {
+            console.log("ytf: looping...")
+            loop();
+        }
+    }, 1000);
+}
+
+loop();

@@ -16,17 +16,19 @@ const buttons = {
     rerun: 2,
 }
 
-async function Run(){
-    while(buttons.rerun > 0){
-        while(!buttons.dButton){
-            console.log('Waiting...');
-            await new Promise(resolve=> setTimeout(resolve, 1000));
-        }
+function check(){
+    if (buttons.dButton){
         console.log('Push the Button!');
         buttons.dButton.click();
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        if (buttons.rerun > 0){
+            return setTimeout(check, 1000);
+        }
+    } else {
+        console.log('Waiting...');
+        return setTimeout(check, 1000);
     }
     console.log('Finished');
+    return;
 }
 
-setTimeout(Run, 1000);
+setTimeout(check, 1000);
